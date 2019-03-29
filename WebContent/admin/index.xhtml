@@ -1,0 +1,37 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>JSF Bootstrap Tutorial</title>
+
+	<!-- Bootstrap core CSS -->
+	<h:outputStylesheet name="css/bootstrap.min.css" />
+	<h:outputStylesheet name="css/fontawesome.min.css" />
+	<h:outputStylesheet name="admin/vendor/metisMenu/metisMenu.min.css" />
+	<h:outputStylesheet name="admin/dist/css/sb-admin-2.css" />
+	<h:outputStylesheet name="css/custom.css" />
+	<h:outputScript name="js/jquery-3.3.1.js" />
+	<h:outputScript name="js/bootstrap.min.js" />
+	<h:outputScript name="admin/vendor/metisMenu/metisMenu.min.js" />
+	<h:outputScript name="admin/dist/js/sb-admin-2.js" />
+
+
+</h:head>
+<h:body>
+	<ui:insert name="header">
+		<ui:include src="/admin/inc/header.xhtml" />
+	</ui:insert>
+	<ui:insert name="header">
+		<ui:include src="/admin/main.xhtml" />
+	</ui:insert>
+	<ui:insert name="footer">
+		<ui:include src="/admin/inc/footer.xhtml" />
+	</ui:insert>
+</h:body>
+</html>

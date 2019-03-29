@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15536266698020" configfile="/LMS-J/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="516" y="300" id="pf15536270103591" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15536270103592 pf15536270103593" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin/index.xhtml" x="504" y="137" id="pf15536270103594" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15536270103592" path="/admin/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="user/index.xhtml" x="372" y="396" id="pf15536270103595" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15536270103593" path="/user/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="register.xhtml" x="24" y="240" id="pf15536270103596" referenceLink="//@navigationRule.1/@navigationCase.2/@toViewId|" outlinks="pf15536270103597 pf15536270103598 pf15536270103599 pf15536634867600" inlinks="pf15536270103597 pf15536270103598 pf15536270103599 pf15536634867600" path="/register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin/Books/Book.xhtml" x="135" y="48" id="pf155362701035910" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" outlinks="pf155362701035911 pf155362701035912" inlinks="pf155362701035912" path="/admin/Books/Book.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin/Books.xhtml" x="135" y="360" id="pf155362701035913" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf155362701035911" path="/admin/Books.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="user/Books.xhtml" x="64" y="490" id="pf15536634867601" outlinks="pf15536634867602" inlinks="pf15536634867602" path="/user/Books.xhtml"/>
+  <links id="pf15536270103592" target="pf15536270103594" source="pf15536270103591" outcome="admin" redirect="true"/>
+  <links id="pf15536270103593" target="pf15536270103595" source="pf15536270103591" outcome="user" redirect="true"/>
+  <links id="pf15536270103597" target="pf15536270103596" source="pf15536270103596" outcome="email"/>
+  <links id="pf15536270103598" target="pf15536270103596" source="pf15536270103596" outcome="success" redirect="true"/>
+  <links id="pf15536270103599" target="pf15536270103596" source="pf15536270103596" outcome="error" redirect="true"/>
+  <links id="pf155362701035911" target="pf155362701035913" source="pf155362701035910" outcome="Book Add Successfully"/>
+  <links id="pf155362701035912" target="pf155362701035910" source="pf155362701035910" outcome="Book Not Added"/>
+  <links id="pf15536634867600" target="pf15536270103596" source="pf15536270103596">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf15536634867602" target="pf15536634867601" source="pf15536634867601" outcome="Book Request Remove">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+</pageflow:Pageflow>

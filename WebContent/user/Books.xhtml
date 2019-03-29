@@ -1,0 +1,139 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>JSF Bootstrap Tutorial</title>
+
+	<!-- Bootstrap core CSS -->
+	<h:outputStylesheet name="css/bootstrap.min.css" />
+	<h:outputStylesheet name="css/fontawesome.min.css" />
+	<h:outputStylesheet name="admin/vendor/metisMenu/metisMenu.min.css" />
+	<h:outputStylesheet name="admin/dist/css/sb-admin-2.css" />
+	<h:outputStylesheet name="css/custom.css" />
+	<h:outputScript name="js/jquery-3.3.1.js" />
+	<h:outputScript name="js/bootstrap.min.js" />
+	<h:outputScript name="admin/vendor/metisMenu/metisMenu.min.js" />
+	<h:outputScript name="admin/dist/js/sb-admin-2.js" />
+</h:head>
+<h:body>
+	<ui:insert name="header">
+		<ui:include src="/user/inc/header.xhtml" />
+	</ui:insert>
+	<div id="page-wrapper">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Books</h1>
+			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+		<div class="row" style="padding-top: 50px;">
+			<h:form>
+				<div class="col-md-10">
+					<div class="form-group">
+						<h:inputText value="#{bookMb.keyWord}" styleClass="form-control"
+							a:placeholder="Enter Title, Author Name, Book Name, etc">
+
+						</h:inputText>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<h:commandButton styleClass="btn btn-info" value="Search"
+							action="#{bookMb.getBookByKeyWord}" />
+					</div>
+				</div>
+			</h:form>
+		</div>
+
+		<!-- row -->
+		<div class="row" style="padding-top: 50px;">
+			<div class="col-lg-12">
+				<div class="table-wrapper">
+					<div class="table-title">
+						<div class="row">
+							<div class="col-md-6">
+								<h2>
+									<b>Books Management</b>
+								</h2>
+							</div>
+							<div class="col-md-6 text-right">
+								<!-- <a
+									href="#{facesContext.externalContext.requestContextPath}/admin/Books/Book.xhtml"
+									class="btn btn-primary"> <i class="fa fa-plus"></i> <span>Add
+										Book</span>
+								</a> -->
+							</div>
+						</div>
+					</div>
+					<div class="table-responsive" style="padding: 20px 0px 20px 0px">
+						<h:dataTable id="bookTable" value="#{bookMb.books}" var="book"
+							styleClass="table table-striped table-hover">
+
+							<h:column>
+								<f:facet name="header">Title</f:facet>    				
+      								#{book.bookTitle}
+   							</h:column>
+							<h:column>
+								<f:facet name="header">Author</f:facet>    				
+      								#{book.bookAuthor}
+   							</h:column>
+
+							<h:column>
+								<f:facet name="header">Publisher</f:facet>
+      							#{book.bookPublisher}	
+   							</h:column>
+
+							<h:column>
+								<f:facet name="header">Status</f:facet>
+      							<h:outputText styleClass="label label-info" value="Available" rendered="#{!(book.availableCopies eq 0)}"></h:outputText>
+      							<h:outputText styleClass="label label-info" value="Not Available" rendered="#{(book.availableCopies eq 0)}"></h:outputText>
+   							</h:column>
+							<h:column>
+								<f:facet name="header">Action</f:facet>
+								<!-- if (us.getBookIssueRequestByBookBeanUserBean(bean, ub, -1, "0") != null) 
+									rendered="#{(bookIssueMB.us.getBookIssueRequestByBookBeanUserBean(book, user, -1, '0'))}
+								 -->
+								<h:form>
+									<h:commandButton styleClass="btn btn-info" value="Reserve Book" action="#{bookIssueMB.acceptBookIssue(book, user)}"></h:commandButton>
+									<h:commandButton styleClass="btn btn-warning" value="Cancel Request" action="#{bookIssueMB.removeBookIssue(book, user)}"></h:commandButton>
+								</h:form>
+								
+							</h:column>
+
+						</h:dataTable>
+					</div>
+					<!-- <div class="clearfix">
+						<div class="hint-text">
+							Showing <b>5</b> out of <b>25</b> entries
+						</div>
+						<ul class="pagination">
+							<li class="page-item disabled"><a href="#">Previous</a></li>
+							<li class="page-item"><a href="#" class="page-link">1</a></li>
+							<li class="page-item"><a href="#" class="page-link">2</a></li>
+							<li class="page-item active"><a href="#" class="page-link">3</a></li>
+							<li class="page-item"><a href="#" class="page-link">4</a></li>
+							<li class="page-item"><a href="#" class="page-link">5</a></li>
+							<li class="page-item"><a href="#" class="page-link">Next</a></li>
+						</ul>
+					</div> -->
+				</div>
+			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /#page-wrapper -->
+
+
+	<ui:insert name="footer">
+		<ui:include src="/admin/inc/footer.xhtml" />
+	</ui:insert>
+</h:body>
+</html>
